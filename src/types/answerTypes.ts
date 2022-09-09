@@ -1,4 +1,4 @@
 import { Answer } from "@prisma/client";
 
 
-export type IAnswerData = Omit<Answer, "id">;
+export type IAnswerData = Omit<Answer, "id" | "questionId">;

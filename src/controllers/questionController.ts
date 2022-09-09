@@ -1,7 +1,9 @@
 import { Request, Response } from 'express';
+import { IAnswerData } from '../types/answerTypes';
 import { IQuestionData } from '../types/questionTypes';
 
 import * as questionServices from "../services/questionService";
+import * as answerServices from "../services/answerService";
 
 export async function createQuestion(req: Request, res: Response) {
   const questionBody: IQuestionData = req.body;
@@ -12,7 +14,12 @@ export async function createQuestion(req: Request, res: Response) {
 }
 
 export async function createAnswer(req: Request, res: Response) {
-  // TODO
+  const questionId: number = Number(req.params.id);
+  const answerBody: IAnswerData = req.body;
+
+  await answerServices.createAnswer(questionId, answerBody);
+
+  res.sendStatus(201);
 }
 
 export async function get(req: Request, res: Response) {
