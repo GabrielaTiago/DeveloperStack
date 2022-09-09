@@ -5,5 +5,8 @@ async function createQuestion(questionBody: IQuestionData) {
     await questionRepository.insert(questionBody);
 }
 
+async function  getQuestions() {
+    return await questionRepository.getQuestions();
+}
 
-export { createQuestion };
+export { createQuestion, getQuestions };
